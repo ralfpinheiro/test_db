@@ -1,4 +1,3 @@
-// const pg = require("pg");
 const settings = require("./settings"); // settings.json
 const value = process.argv[2];
 

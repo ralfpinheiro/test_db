@@ -23,7 +23,15 @@ function findPerson(db, first_name) {
 
   db.query(query, [first_name], (err, res) => {
     if (err) throw err;
-    console.log("findPerson res:", res.rows);
-    db.end();
+    displayResult(db, value, res.rows);
   });
+}
+
+function displayResult(db, value, results) {
+  for (let name in results) {
+    let count = Number(name) + 1;
+    let birthdate = results[name].birthdate;
+    console.log(`- ${count}: ${results[name].first_name} ${results[name].last_name}, born ${birthdate}`);
+    db.end();
+  }
 }
